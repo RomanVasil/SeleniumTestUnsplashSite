@@ -11,6 +11,6 @@ public class Data {
     public String invEmail = "jostik@outlook.com";
 
     // add image for findImage
-    public String pathFile = "C:\\Users\\Home\\Desktop\\Selenium\\WebSite\\src\\images\\jairo-alzate-AjD4LorPIWc-unsplash.jpg";
+    public String pathFile = "C:\\Users\\Home\\Desktop\\Selenium\\SeleniumTestUnsplashSite\\WebSite\\src\\images\\jairo-alzate-AjD4LorPIWc-unsplash.jpg";
 
 }
