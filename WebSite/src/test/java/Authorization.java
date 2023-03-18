@@ -3,12 +3,13 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static java.lang.Thread.sleep;
 
 public class Authorization extends Data {
 
-    WebDriver driver = new ChromeDriver();
+    //    WebDriver driver = new ChromeDriver();
     Data getDate = new Data();
 
     private By btnLogIn = By.xpath("/html/body/div/div/header/nav/div[2]/div[2]/div[3]/a[1]");
@@ -21,6 +22,12 @@ public class Authorization extends Data {
     @Test
     public void login() throws InterruptedException {
 
+        ChromeOptions opts = new ChromeOptions();
+        opts.addArguments("--remote-allow-origins=*");
+        //     opts.setExperimentalOption("debuggerAddress", "127.0.0.1:" + browserDebuggingPort);
+        WebDriver driver = new ChromeDriver(opts);
+
+
         driver.get(getDate.getUrl);
         //    driver.manage().window().maximize();
 
@@ -29,12 +36,16 @@ public class Authorization extends Data {
         driver.findElement(inputPassword).sendKeys(getDate.password);
         driver.findElement(btnLogin).click();
 
-        sleep(30000);
+        sleep(3000);
         driver.quit();
     }
 
     @Test
     public void negativeLogin() throws InterruptedException {
+        ChromeOptions opts = new ChromeOptions();
+        opts.addArguments("--remote-allow-origins=*");
+        //     opts.setExperimentalOption("debuggerAddress", "127.0.0.1:" + browserDebuggingPort);
+        WebDriver driver = new ChromeDriver(opts);
 
         driver.get(getDate.getUrl);
         //    driver.manage().window().maximize();
@@ -43,10 +54,11 @@ public class Authorization extends Data {
         driver.findElement(inputEmail).sendKeys(getDate.invEmail);
         driver.findElement(inputPassword).sendKeys(getDate.password);
         driver.findElement(btnLogin).click();
-       String getError= driver.findElement(getErrorText).getText();
+        String getError = driver.findElement(getErrorText).getText();
 
         Assert.assertEquals("Invalid email or password.", getError);
-
+        sleep(3000);
+        driver.quit();
 
     }
 }

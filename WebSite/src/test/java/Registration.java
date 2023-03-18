@@ -2,12 +2,13 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static java.lang.Thread.sleep;
 
 
 public class Registration extends Data {
-    WebDriver driver = new ChromeDriver();
+   // WebDriver driver = new ChromeDriver();
     Data getDate = new Data();
     private By btnSignUp = By.xpath("//*[@id=\"app\"]/div/header/nav/div[2]/div[2]/div[3]/a[2]");
     private By inputFirstName = By.xpath("//div[@class='row']//input[@id='user_first_name']");
@@ -20,6 +21,11 @@ public class Registration extends Data {
 
     @Test
     public void registration() throws InterruptedException {
+
+        ChromeOptions opts = new ChromeOptions();
+        opts.addArguments("--remote-allow-origins=*");
+        //     opts.setExperimentalOption("debuggerAddress", "127.0.0.1:" + browserDebuggingPort);
+        WebDriver driver = new ChromeDriver(opts);
 
         driver.get(getDate.getUrl);
  //       driver.manage().window().maximize();

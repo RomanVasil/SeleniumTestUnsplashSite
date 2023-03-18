@@ -3,13 +3,15 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static java.lang.Thread.sleep;
 
 public class FindImage {
 
-    WebDriver driver = new ChromeDriver();
+   // WebDriver driver = new ChromeDriver();
     Data getDate = new Data();
+
 
     private By btnVisualSearch = By.xpath("//*[@id=\"popover-visual-search-form-homepage-header\"]/button");
     private By openFile = By.xpath("//div[@class='Y7cLH QzYnR L2Q39']//input[@class='RdTIh']");
@@ -19,6 +21,11 @@ public class FindImage {
 
     @Test
     public void findFile() throws InterruptedException {
+
+        ChromeOptions opts = new ChromeOptions();
+        opts.addArguments("--remote-allow-origins=*");
+        //     opts.setExperimentalOption("debuggerAddress", "127.0.0.1:" + browserDebuggingPort);
+        WebDriver driver = new ChromeDriver(opts);
 
         driver.get(getDate.getUrl);
         //    driver.manage().window().maximize();
